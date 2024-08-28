@@ -13,3 +13,5 @@ RUN yarn install
 
 
 CMD ["npx", "cypress", "run", "--config", "video=false", "--spec", "cypress/e2e/apple-api.cy.ts"]
+
+# test
