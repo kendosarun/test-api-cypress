@@ -1,0 +1,34 @@
+{
+    "id": "5vbZafU8Q2u_AkCqbQh4Wg",
+    "results": [
+        {
+            "sectionName": "quickLinks",
+            "sectionResults": [
+                {
+                    "label": "ค้นหาร้าน",
+                    "url": "https://www.apple.com/th/retail/"
+                },
+                {
+                    "label": "อุปกรณ์เสริม",
+                    "url": "https://www.apple.com/th/shop/goto/accessories/apple_accessories"
+                },
+                {
+                    "label": "AirPods",
+                    "url": "https://www.apple.com/th/airpods/"
+                },
+                {
+                    "label": "AirTag",
+                    "url": "https://www.apple.com/th/airtag/"
+                },
+                {
+                    "label": "Apple Trade In",
+                    "url": "https://www.apple.com/th/shop/goto/trade_in"
+                }
+            ]
+        },
+        {
+            "sectionName": "suggestions",
+            "sectionResults": []
+        }
+    ]
+}

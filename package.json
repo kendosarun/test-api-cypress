@@ -1,0 +1,11 @@
+{
+  "scripts": {
+        "ui-mode": "cypress open",
+        "headless-mode": "cypress run --config video=false"
+    },
+  "devDependencies": {
+    "@types/jest": "29.5.12",
+    "cypress": "13.13.3",
+    "typescript": "5.5.4"
+  }
+}
