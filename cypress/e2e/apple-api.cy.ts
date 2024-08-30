@@ -5,7 +5,7 @@ describe('Basic Cypress', () => {
     const endpointLanding = `https://www.apple.com/search-services/suggestions/defaultlinks/?src=globalnav&locale=th_TH`;
     const endpointIphoneTab = 'https://www.apple.com/th/shop/mcm/product-price?parts=IPHONE15PRO_MAIN,IPHONE15_MAIN,IPHONE14_MAIN,IPHONE13_MAIN,IPHONESE3_MAIN';
 
-    const appleJsonFile = `response-body-apple.json`;
+    // const appleJsonFile = `response-body-apple.json`;
 
     const homepage = new AppleLandingPage(endpointLanding);
     const iPhoneTab = new AppleIPhoneMenu(endpointIphoneTab);
@@ -26,9 +26,14 @@ describe('Basic Cypress', () => {
 
     });
 
-    it('Assertion API 2', () => {
+    it('user navigate to IPhone Menu and validate Product & Price should be correct', () => {
 
         iPhoneTab.ClickIPhoneTab(/^iPhone/);
+
+        iPhoneTab.CheckIPhoneProduct('0', /iPhone 15 Pro/, /41,900$/);
+        iPhoneTab.CheckIPhoneProduct('1', /iPhone 15/, /32,900$/);
+        iPhoneTab.CheckIPhoneProduct('2', /iPhone 14/, /29,900$/);
+        iPhoneTab.CheckIPhoneProduct('3', /iPhone 13/, /24,900$/);
 
         iPhoneTab.AssertNameProduct(`IPHONE14_MAIN`, 'name', 'iPhone 14' as string);
         iPhoneTab.AssertPriceProduct(`IPHONE14_MAIN`, 'value', 29900.00 as number)
