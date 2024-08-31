@@ -29,6 +29,9 @@ export class AppleIPhoneMenu {
         cy.get('[data-globalnav-item-name="iphone"]').contains(tabName);
         cy.get('[data-globalnav-item-name="iphone"]').click();
 
+        cy.url().should('include', 'https://www.apple.com/th/iphone/');
+        cy.title().should('include', 'iPhone - Apple (TH)');
+
     }
 
     CheckIPhoneProduct(idx: string, name: RegExp, price: RegExp) {

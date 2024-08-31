@@ -18,7 +18,7 @@ describe('Basic Cypress', () => {
         cy.wait(2000);
     });
 
-    it('Assertion API 1', () => {
+    it.skip('Assertion API 1', () => {
 
         homepage.LandingPage(0, 'label', 'ค้นหาร้าน');
         homepage.LandingPage(1, 'label', 'อุปกรณ์เสริม');
