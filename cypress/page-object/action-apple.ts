@@ -37,7 +37,7 @@ export class AppleIPhoneMenu {
         cy.get(`#gallery-item-${idx} > p.product-tile-price.product-tile-padding.has-dynamic-content > span`).contains(price);
     }
 
-    AssertNameProduct(property: any, key: string, nameOrPrice: string|number) {
+    AssertNameProduct(property: string, key: string, nameOrPrice: string|number) {
 
         cy.request('GET', `${this.endpoint}`).then((value: Cypress.Response<any>) => {
             expect(value.status).to.eq(200);
@@ -45,7 +45,7 @@ export class AppleIPhoneMenu {
         });
     }
 
-    AssertPriceProduct(property: any, key: string, nameOrPrice: string|number) {
+    AssertPriceProduct(property: string, key: string, nameOrPrice: string|number) {
 
         cy.request('GET', `${this.endpoint}`).then((value: Cypress.Response<any>) => {
             expect(value.status).to.eq(200);
