@@ -28,20 +28,31 @@ describe('Basic Cypress', () => {
 
     it('user navigate to IPhone Menu and validate Product & Price should be correct', () => {
 
-        iPhoneTab.ClickIPhoneTab(/^iPhone/);
+        iPhoneTab.clickIPhoneTab(/^iPhone/);
 
-        iPhoneTab.AssertURLAndTitle('https://www.apple.com/th/iphone/', 'iPhone - Apple (TH)');
+        iPhoneTab.verifyURLAndTitlePage('https://www.apple.com/th/iphone/', 'iPhone - Apple (TH)');
 
-        iPhoneTab.CheckIPhoneProduct('0', /iPhone 15 Pro/, /41,900$/);
-        iPhoneTab.CheckIPhoneProduct('1', /iPhone 15/, /32,900$/);
-        iPhoneTab.CheckIPhoneProduct('2', /iPhone 14/, /29,900$/);
-        iPhoneTab.CheckIPhoneProduct('3', /iPhone 13/, /24,900$/);
+        iPhoneTab.checkIPhoneProduct('0', /iPhone 15 Pro/, /41,900$/);
+        iPhoneTab.checkIPhoneProduct('1', /iPhone 15/, /32,900$/);
+        iPhoneTab.checkIPhoneProduct('2', /iPhone 14/, /29,900$/);
+        iPhoneTab.checkIPhoneProduct('3', /iPhone 13/, /24,900$/);
 
-        iPhoneTab.AssertNameProduct(`IPHONE14_MAIN`, 'name', 'iPhone 14' as string);
-        iPhoneTab.AssertPriceProduct(`IPHONE14_MAIN`, 'value', 29900.00 as number)
+        iPhoneTab.responseNameProduct(`IPHONE14_MAIN`, 'name', 'iPhone 14' as string);
+        iPhoneTab.responsePriceProduct(`IPHONE14_MAIN`, 'value', 29900.00 as number)
 
-        iPhoneTab.AssertNameProduct(`IPHONE15PRO_MAIN`, 'name', 'iPhone 15 Pro' as string);
-        iPhoneTab.AssertPriceProduct(`IPHONE15PRO_MAIN`, 'value', 41900.00 as number)
+        iPhoneTab.responseNameProduct(`IPHONE15PRO_MAIN`, 'name', 'iPhone 15 Pro' as string);
+        iPhoneTab.responsePriceProduct(`IPHONE15PRO_MAIN`, 'value', 41900.00 as number);
+
+        iPhoneTab.clickBuyLink('iphone 15');
+
+        // select color -> 1 blue, 2 red, 3 yellow, 4 green, 5 black
+        //select memory is number -> 128, 256, 512
+        iPhoneTab.selectSpecIPhone15(
+            'plus',
+            2,
+            512,
+            false
+        );
 
     });
 });

@@ -24,26 +24,26 @@ export class AppleIPhoneMenu {
         this.endpoint = endpoint;
     }
 
-    ClickIPhoneTab(tabName: RegExp) {
+    clickIPhoneTab(tabName: RegExp) {
 
         cy.get('[data-globalnav-item-name="iphone"]').contains(tabName);
         cy.get('[data-globalnav-item-name="iphone"]').click();
     }
 
-    CheckIPhoneProduct(idx: string, name: RegExp, price: RegExp) {
+    checkIPhoneProduct(idx: string, name: RegExp, price: RegExp) {
 
         cy.get(`#gallery-item-${idx} > div.product-tile-header > div.product-tile-product-id.product-tile-padding > h3 > p`).contains(name);
         cy.get(`#gallery-item-${idx} > p.product-tile-price.product-tile-padding.has-dynamic-content > span`).contains(price);
     }
 
-    AssertURLAndTitle(url: string, title: string) {
+    verifyURLAndTitlePage(url: string, title: string) {
         
         cy.url().should('include', url);
         cy.title().should('include', title);
 
     }
 
-    AssertNameProduct(property: string, key: string, nameOrPrice: string|number) {
+    responseNameProduct(property: string, key: string, nameOrPrice: string|number) {
 
         cy.request('GET', `${this.endpoint}`).then((value: Cypress.Response<any>) => {
             expect(value.status).to.eq(200);
@@ -51,12 +51,45 @@ export class AppleIPhoneMenu {
         });
     }
 
-    AssertPriceProduct(property: string, key: string, nameOrPrice: string|number) {
+    responsePriceProduct(property: string, key: string, nameOrPrice: string|number) {
 
         cy.request('GET', `${this.endpoint}`).then((value: Cypress.Response<any>) => {
             expect(value.status).to.eq(200);
             expect(value.body.items[property].price).to.have.property(key, nameOrPrice);
 
         });
+    }
+
+    clickBuyLink(locatorProduct: string) {
+        cy.get(`[data-analytics-title="buy - ${locatorProduct}"]`).click();
+    }
+
+    selectSpecIPhone15(product: string, color: number, memory: number, appleCare: boolean) {
+
+        if (product = 'plus') {
+            cy.get(`[data-autom="dimensionScreensize6_1inch"]`).click({ force: true });
+        } else {
+            cy.get(`[data-autom="pricedimensionScreensize6_1inch"]`).click({ force: true });
+        }
+
+        // select color -> 1 blue, 2 red, 3 yellow, 4 green, 5 black
+        cy.get(`:nth-child(${color}) > .colornav-link > .colornav-swatch`).click();
+                
+        if (memory = 128) {
+            cy.get(`[data-autom="pricedimensionCapacity128gb"]`).should('exist').click({force:true});
+        } else if (memory = 256) {
+            cy.get('[data-autom="pricedimensionCapacity256gb"]').should('exist').click({force:true});
+        } else {
+            cy.get('[data-autom="pricedimensionCapacity512gb"]').should('exist').click({force:true});
+        }
+
+        if (appleCare) {
+            cy.get('#applecareplus_58_applecare_58_open').click();
+        } else {
+            cy.get('#applecareplus_58_noapplecare_label').click();
+        }
+
+        cy.get('[data-autom="add-to-cart"]').should('be.enabled').click();
+
     }
 }
