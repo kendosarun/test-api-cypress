@@ -30,6 +30,8 @@ describe('Basic Cypress', () => {
 
         iPhoneTab.ClickIPhoneTab(/^iPhone/);
 
+        iPhoneTab.AssertURLAndTitle('https://www.apple.com/th/iphone/', 'iPhone - Apple (TH)');
+
         iPhoneTab.CheckIPhoneProduct('0', /iPhone 15 Pro/, /41,900$/);
         iPhoneTab.CheckIPhoneProduct('1', /iPhone 15/, /32,900$/);
         iPhoneTab.CheckIPhoneProduct('2', /iPhone 14/, /29,900$/);

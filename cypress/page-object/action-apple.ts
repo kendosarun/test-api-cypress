@@ -28,16 +28,19 @@ export class AppleIPhoneMenu {
 
         cy.get('[data-globalnav-item-name="iphone"]').contains(tabName);
         cy.get('[data-globalnav-item-name="iphone"]').click();
-
-        cy.url().should('include', 'https://www.apple.com/th/iphone/');
-        cy.title().should('include', 'iPhone - Apple (TH)');
-
     }
 
     CheckIPhoneProduct(idx: string, name: RegExp, price: RegExp) {
 
         cy.get(`#gallery-item-${idx} > div.product-tile-header > div.product-tile-product-id.product-tile-padding > h3 > p`).contains(name);
         cy.get(`#gallery-item-${idx} > p.product-tile-price.product-tile-padding.has-dynamic-content > span`).contains(price);
+    }
+
+    AssertURLAndTitle(url: string, title: string) {
+        
+        cy.url().should('include', url);
+        cy.title().should('include', title);
+
     }
 
     AssertNameProduct(property: string, key: string, nameOrPrice: string|number) {
