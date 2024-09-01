@@ -86,7 +86,7 @@ export class AppleIPhoneMenu {
         if (product = 'plus') {
             cy.get(`[data-autom="dimensionScreensize6_1inch"]`).click({ force: true });
         } else {
-            cy.get(`[data-autom="pricedimensionScreensize6_1inch"]`).click({ force: true });
+            cy.get(`[data-autom="pricedimensionScreensize6_7inch"]`).click({ force: true });
         }
 
         // select color -> 1 blue, 2 red, 3 yellow, 4 green, 5 black

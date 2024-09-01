@@ -58,7 +58,7 @@ describe('Basic Cypress', () => {
 
         iPhoneTab.clickCheckoutButton();
 
-        iPhoneTab.verifyProductOnCheckOutPage(/iPhone 15 ความจุ 128GB สีชมพู/);
+        iPhoneTab.verifyProductOnCheckOutPage(/iPhone 15 Plus ความจุ 128GB สีชมพู/);
 
     });
 });
