@@ -5,9 +5,9 @@ describe('Basic Cypress', () => {
     const endpointLanding = `https://www.apple.com/search-services/suggestions/defaultlinks/?src=globalnav&locale=th_TH`;
     const endpointIphoneTab = 'https://www.apple.com/th/shop/mcm/product-price?parts=IPHONE15PRO_MAIN,IPHONE15_MAIN,IPHONE14_MAIN,IPHONE13_MAIN,IPHONESE3_MAIN';
 
-    // const appleJsonFile = `response-body-apple.json`;
+    const appleJsonFile = `response-body-apple.json`;
 
-    const homepage = new AppleLandingPage(endpointLanding);
+    const homepage = new AppleLandingPage(endpointLanding, appleJsonFile);
     const iPhoneTab = new AppleIPhoneMenu(endpointIphoneTab);
 
     beforeEach(() => {
@@ -18,11 +18,13 @@ describe('Basic Cypress', () => {
         cy.wait(2000);
     });
 
-    it.skip('Assertion API 1', () => {
+    it('verify API response Apple Menu in Homepage', () => {
 
-        homepage.LandingPage(0, 'label', 'ค้นหาร้าน');
-        homepage.LandingPage(1, 'label', 'อุปกรณ์เสริม');
-        homepage.LandingPage(2, 'label', 'AirPods');
+        homepage.specificResponse(0, 'label', 'ค้นหาร้าน');
+        homepage.specificResponse(1, 'label', 'อุปกรณ์เสริม');
+        homepage.specificResponse(2, 'label', 'AirPods');
+
+        homepage.validateMenuResponseBody();
 
     });
 
@@ -53,6 +55,10 @@ describe('Basic Cypress', () => {
             512,
             false
         );
+
+        iPhoneTab.clickCheckoutButton();
+
+        iPhoneTab.verifyProductOnCheckOutPage(/iPhone 15 ความจุ 128GB สีชมพู/);
 
     });
 });

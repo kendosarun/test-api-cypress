@@ -1,18 +1,35 @@
 export class AppleLandingPage {
 
     endpoint: string;
+    filePath: string;
 
-    constructor(endpoint: string) {
+    constructor(endpoint: string, filePath: string) {
         this.endpoint = endpoint;
+        this.filePath = filePath;
     }
 
-    LandingPage(arrayNumber: number, key: string, value: string) {
+    specificResponse(arrayNumber: number, key: string, value: string) {
         cy.request('GET', `${this.endpoint}`).then((response) => {
             expect(response.status).to.eq(200);
 
             expect(response.body.results[0].sectionResults[arrayNumber]).to.have.property(key, value);
             
         });
+    }
+
+    validateMenuResponseBody() {
+        cy.fixture(this.filePath).then((jsonFile) => {
+            cy.request('GET', `${this.endpoint}`).then((response) => {
+                expect(response.status).to.eq(200);
+
+                const omitFieldIdFromJsonFile = Cypress._.omit(jsonFile, 'id');
+                const omitFieldIdFromResponse = Cypress._.omit(response.body, 'id');
+
+                expect(omitFieldIdFromResponse).to.deep.equal(omitFieldIdFromJsonFile);
+
+            });
+        });
+
     }
 }
 
@@ -91,5 +108,13 @@ export class AppleIPhoneMenu {
 
         cy.get('[data-autom="add-to-cart"]').should('be.enabled').click();
 
+    }
+
+    clickCheckoutButton() {
+        cy.get(`[data-autom="proceed"]`).should('be.enabled').click();
+    }
+
+    verifyProductOnCheckOutPage(item: RegExp) {
+        cy.get('[data-autom="bag-item-name"]').contains(item);
     }
 }
