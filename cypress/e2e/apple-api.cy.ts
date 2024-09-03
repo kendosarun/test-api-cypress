@@ -1,4 +1,4 @@
-import { AppleIPhoneMenu, AppleLandingPage } from "../page-object/action-apple";
+import { AppleIPhoneMenu, AppleLandingPage } from "../page-object/apple/action-apple";
 
 describe('Basic Cypress', () => {
 
@@ -60,5 +60,19 @@ describe('Basic Cypress', () => {
 
         iPhoneTab.verifyProductOnCheckOutPage(/iPhone 15 Plus ความจุ 128GB สีชมพู/);
 
+    });
+
+    it.only('user search keyword with `Android` in Apple page', () => {
+
+        cy.get(`#globalnav-menubutton-link-search`).click();
+
+        cy.wait(1000);
+
+        cy.get('#globalnav-submenu-search > div > div > form > div.globalnav-searchfield-wrapper > input.globalnav-searchfield-input').type('Android{enter}');
+
+        cy.url().should('include','/search/Android?');
+
+        cy.title().should('include', 'Android - Apple (TH)');
+        // cy.title().contains('Android - Apple (TH)');
     });
 });
