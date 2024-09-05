@@ -97,7 +97,7 @@ export class AppleIPhoneMenu {
     appleCare: boolean
   ) {
     console.log(appleCare);
-    if ((product = "Plus")) {
+    if ((product == "Plus")) {
       cy.get(`[data-autom="pricedimensionScreensize6_7inch"]`).click({
         force: true,
       });
@@ -110,7 +110,7 @@ export class AppleIPhoneMenu {
     // select color -> 1 blue, 2 red, 3 yellow, 4 green, 5 black
     cy.get(`:nth-child(${color}) > .colornav-link > .colornav-swatch`).click();
 
-    if (memory === 128) {
+    if (memory == 128) {
       cy.get(`[data-autom="pricedimensionCapacity128gb"]`)
         .should("exist")
         .click({ force: true });
