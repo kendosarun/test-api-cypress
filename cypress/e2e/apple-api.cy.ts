@@ -62,7 +62,7 @@ describe('Basic Cypress', () => {
 
     });
 
-    it.only('user search keyword with `Android` in Apple page', () => {
+    it('user search keyword with `Android` in Apple page', () => {
 
         cy.get(`#globalnav-menubutton-link-search`).click();
 
