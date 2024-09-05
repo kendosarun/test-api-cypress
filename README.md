@@ -1,3 +1,1 @@
-# API Testing with Cypress :dart:
-
-#### implement by Me :tada:
+# API Testing with Cypress :dart: :tada:

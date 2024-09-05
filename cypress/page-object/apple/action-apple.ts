@@ -63,7 +63,7 @@ export class AppleIPhoneMenu {
     nameOrPrice: string | number
   ) {
     cy.request("GET", `${this.endpoint}`).then(
-      (value: Cypress.Response<any>) => {
+      (value) => {
         expect(value.status).to.eq(200);
         expect(value.body.items[property]).to.have.property(key, nameOrPrice);
       }
@@ -76,7 +76,7 @@ export class AppleIPhoneMenu {
     nameOrPrice: string | number
   ) {
     cy.request("GET", `${this.endpoint}`).then(
-      (value: Cypress.Response<any>) => {
+      (value) => {
         expect(value.status).to.eq(200);
         expect(value.body.items[property].price).to.have.property(
           key,
