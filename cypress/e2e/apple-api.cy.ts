@@ -50,15 +50,15 @@ describe('Basic Cypress', () => {
         // select color -> 1 blue, 2 red, 3 yellow, 4 green, 5 black
         //select memory is number -> 128, 256, 512
         iPhoneTab.selectSpecIPhone15(
-            'plus',
+            'Plus',
             2,
             512,
-            false
+            true
         );
 
         iPhoneTab.clickCheckoutButton();
 
-        iPhoneTab.verifyProductOnCheckOutPage(/iPhone 15 Plus ความจุ 128GB สีชมพู/);
+        iPhoneTab.verifyProductOnCheckOutPage(/iPhone 15 Plus ความจุ 512GB สีชมพู/);
 
     });
 
