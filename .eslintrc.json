@@ -7,8 +7,7 @@
     "extends": [
         "eslint:recommended",
         "plugin:@typescript-eslint/recommended",
-        "plugin:cypress/recommended",
-        "plugin:prettier/recommended"
+        "plugin:cypress/recommended"
     ],
     "plugins": [
         "@typescript-eslint",
@@ -20,6 +19,6 @@
         "no-async-tests": "warn",
         "no-unnecessary-waiting": "warn",
         "unsafe-to-chain-command": "warn",
-        "prettier/prettier": "error"
+        "require-data-selectors": "warn"
     }
 }

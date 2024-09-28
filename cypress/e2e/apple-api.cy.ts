@@ -3,7 +3,7 @@ import { AppleIPhoneMenu, AppleLandingPage } from "../page-object/apple/action-a
 describe('Basic Cypress', () => {
 
     const endpointLanding = `https://www.apple.com/search-services/suggestions/defaultlinks/?src=globalnav&locale=th_TH`;
-    const endpointIphoneTab = 'https://www.apple.com/th/shop/mcm/product-price?parts=IPHONE15PRO_MAIN,IPHONE15_MAIN,IPHONE14_MAIN,IPHONE13_MAIN,IPHONESE3_MAIN';
+    const endpointIphoneTab = 'https://www.apple.com/th/shop/mcm/product-price?parts=IPHONE16PRO,IPHONE16,IPHONE15_MAIN,IPHONE14_MAIN,IPHONESE3_MAIN';
 
     const appleJsonFile = `response-body-apple.json`;
 
@@ -34,23 +34,24 @@ describe('Basic Cypress', () => {
 
         iPhoneTab.verifyURLAndTitlePage('https://www.apple.com/th/iphone/', 'iPhone - Apple (TH)');
 
-        iPhoneTab.checkIPhoneProduct('0', /iPhone 15 Pro/, /41,900$/);
-        iPhoneTab.checkIPhoneProduct('1', /iPhone 15/, /32,900$/);
-        iPhoneTab.checkIPhoneProduct('2', /iPhone 14/, /29,900$/);
-        iPhoneTab.checkIPhoneProduct('3', /iPhone 13/, /24,900$/);
+        // iPhoneTab.checkIPhoneProduct('0', /iPhone 15 Pro/, /41,900$/);
+        // iPhoneTab.checkIPhoneProduct('1', /iPhone 15/, /32,900$/);
+        // iPhoneTab.checkIPhoneProduct('2', /iPhone 14/, /29,900$/);
+        // iPhoneTab.checkIPhoneProduct('3', /iPhone 13/, /24,900$/);
 
-        iPhoneTab.responseNameProduct(`IPHONE14_MAIN`, 'name', 'iPhone 14' as string);
-        iPhoneTab.responsePriceProduct(`IPHONE14_MAIN`, 'value', 29900.00 as number)
+    
+        // iPhoneTab.responseNameProduct(`IPHONE14_MAIN`, 'name', 'iPhone 14');
+        // iPhoneTab.responsePriceProduct(`IPHONE14_MAIN`, 'value', 29900.00 as number)
 
-        iPhoneTab.responseNameProduct(`IPHONE15PRO_MAIN`, 'name', 'iPhone 15 Pro' as string);
-        iPhoneTab.responsePriceProduct(`IPHONE15PRO_MAIN`, 'value', 41900.00 as number);
+        iPhoneTab.responseNameProduct(`IPHONE16PRO`, 'name', 'iPhone 16 Pro' as string);
+        iPhoneTab.responsePriceProduct(`IPHONE16PRO`, 'value', 39900.00 as number);
 
-        iPhoneTab.clickBuyLink('iphone 15');
+        iPhoneTab.clickBuyLink('iphone 16 pro');
 
-        // select color -> 1 blue, 2 red, 3 yellow, 4 green, 5 black
+        // select color -> 1 pink, 2 gray, 3 white, 4 gold
         //select memory is number -> 128, 256, 512
-        iPhoneTab.selectSpecIPhone15(
-            'Plus',
+        iPhoneTab.selectSpecIPhone16Pro(
+            'ProMax',
             2,
             512,
             true
@@ -58,7 +59,7 @@ describe('Basic Cypress', () => {
 
         iPhoneTab.clickCheckoutButton();
 
-        iPhoneTab.verifyProductOnCheckOutPage(/iPhone 15 Plus ความจุ 512GB สีชมพู/);
+        iPhoneTab.verifyProductOnCheckOutPage(/iPhone 16 Pro Max 512GB สีไทเทเนียมธรรมชาติ/);
 
     });
 

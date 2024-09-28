@@ -90,24 +90,24 @@ export class AppleIPhoneMenu {
     cy.get(`[data-analytics-title="buy - ${locatorProduct}"]`).click();
   }
 
-  selectSpecIPhone15(
+  selectSpecIPhone16Pro(
     product: string,
     color: number,
     memory: number,
     appleCare: boolean
   ) {
     console.log(appleCare);
-    if ((product == "Plus")) {
-      cy.get(`[data-autom="pricedimensionScreensize6_7inch"]`).click({
+    if ((product == "ProMax")) {
+      cy.get(`[data-autom="pricedimensionScreensize6_9inch"]`).click({
         force: true,
       });
     } else {
-      cy.get(`[data-autom="dimensionScreensize6_1inch"]`).click({
+      cy.get(`[data-autom="pricedimensionScreensize6_3inch"]`).click({
         force: true,
       });
     }
 
-    // select color -> 1 blue, 2 red, 3 yellow, 4 green, 5 black
+    // select color -> 1 pink, 2 gray, 3 white, 4 gold
     cy.get(`:nth-child(${color}) > .colornav-link > .colornav-swatch`).click();
 
     if (memory == 128) {
